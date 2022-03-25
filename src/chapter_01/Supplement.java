@@ -2,7 +2,9 @@ package chapter_01;
 
 import java.util.Scanner;
 
-public class Supplement_Main {
+public class Supplement {
+	
+	
 	
 	//실습 1C-1 중앙값 구하기
 	static int med3(int a, int b, int c) {
@@ -27,6 +29,17 @@ public class Supplement_Main {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
+		
+		/*실습 1C-2
+		int n;
+		System.out.println("2자리의 정수를 입력하세요.");
+		do {
+			System.out.println("입력: ");
+			n = sc.nextInt();
+		} while(n < 10 || n > 99);
+		System.out.println("변수 no값은 " + n + "가(이) 되었습니다.");
+		*/
+		
 		
 		/*실습 1C-1 중앙값 구하기
 		System.out.println("세 정수의 중앙값을 구합니다.");
