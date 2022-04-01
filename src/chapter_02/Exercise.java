@@ -5,6 +5,21 @@ import java.util.Scanner;
 
 public class Exercise {
 	
+	//실습 2-6
+	//배열 요소 a[idx1]과 a[idx2]의 값을 바꾸는 메소드
+	static void swap(int[] a, int idx1, int idx2) {  //실습 2-6
+		int t = a[idx1]; 
+		a[idx1] = a[idx2]; 
+		a[idx2] = t; 
+	}
+	//배열 a의 요소를 역순으로 정렬
+	static void reverse(int[] a) {			//실습 2-6
+		for(int i = 0; i < a.length / 2; i++) {   
+			swap(a, i, a.length - i -1); // 첫번째와 마지막, 두번째와 마지막-1, 세번째와 마지막-2, ...... 요소의 자리 바꿈
+		}
+	}
+	
+	
 	//실습 2-5
 	static int maxOf_2(int[] a) {
 		int max = a[0];
@@ -28,6 +43,24 @@ public class Exercise {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
+		
+		/*실습 2-6
+		System.out.print("요솟수: ");
+		int num = sc.nextInt();
+		
+		int[] x = new int[num]; //요솟수가 num인 배열
+		
+		for(int i = 0; i < num; i ++) {
+			System.out.print("x[" + i + "]: " );
+			x[i] = sc.nextInt();
+		}
+		reverse(x); // 배열 a의 요소를 역순으로 정렬
+		
+		System.out.println("요소를 역순으로 정렬했습니다.");
+		for(int i = 0; i < num; i++) {
+			System.out.println("x[" + i + "] = " + x[i]);
+		}
+		*/
 		
 		/*실습 2-5
 		Random random = new Random();
