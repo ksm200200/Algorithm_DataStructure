@@ -5,6 +5,22 @@ import java.util.Scanner;
 
 public class Practice {
 	
+	//연습문제 2-5
+	static void rcopy(int[] a, int[] b) {
+		int num = a.length <= b.length ? a.length : b.length;
+		for(int i = 0; i < num; i++) {
+			a[num-i-1] = b[i];
+		}
+	}
+	
+	//연습문제 2-4
+	static void copy(int[] a, int[] b) {
+		int num = a.length <= b.length ? a.length : b.length;
+		for(int i = 0; i < num; i++) {
+			a[i] = b[i];
+		}
+	}
+	
 	//연습문제 2-3
 	static int sumOf(int[] a) {
 		int sum = 0;
@@ -54,6 +70,56 @@ public class Practice {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
+		
+		
+		//연습문제 2-5
+		System.out.print("배열 a의 요솟수: ");
+		int na = sc.nextInt();
+		int[] a = new int[na];
+		
+		for(int i = 0; i < na; i++){
+			System.out.print("a[" + i +"]: ");
+			a[i] = sc.nextInt();
+		}
+		System.out.print("배열 b의 요솟수: ");
+		int nb = sc.nextInt();
+		int[] b = new int[nb];		
+		for(int i = 0; i < nb; i++){
+			System.out.print("b[" + i +"]: ");
+			b[i] = sc.nextInt();
+		}
+		
+		rcopy(a, b);
+		System.out.println("배열 b의 모든 요소를 배열 a에 역순으로 복사했습니다.");
+		
+		for(int i = 0; i < na; i++) {
+			System.out.print(a[i]+ " ");
+		}
+		
+		
+		
+		/*연습문제 2-4
+		System.out.print("배열 a의 요솟수: ");
+		int na = sc.nextInt();
+		int[] a = new int[na];
+		
+		for(int i = 0; i < na; i++){
+			System.out.print("a[" + i +"]: ");
+			a[i] = sc.nextInt();
+		}
+		System.out.print("배열 b의 요솟수: ");
+		int nb = sc.nextInt();
+		int[] b = new int[nb];		
+		for(int i = 0; i < nb; i++){
+			System.out.print("b[" + i +"]: ");
+			b[i] = sc.nextInt();
+		}
+		copy(a, b);
+		System.out.println("배열 b의 모든 요소를 배열 a에 복사했습니다.");
+		
+		for(int i = 0; i < na; i++) {
+			System.out.print(a[i]+ " ");
+		}*/
 		
 		/*연습문제 2-3
 		System.out.print("요솟수는: ");
