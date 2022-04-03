@@ -7,6 +7,20 @@ public class Exercise {
 	
 	
 	
+	//실습 2-8
+	static int CardConvRev(int x, int r, char[] d) {
+		int digits = 0;
+		// 정수값 x를 r진수로 변환하여 배열 d에 아랫자리부터 넣어두고 자릿수를 반환합니다.
+		String dchar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		
+		do {                    //변환 후의 자릿수
+			d[digits++] = dchar.charAt(x % r);
+			x/=r;
+		} while(x != 0);
+		return digits;
+	}
+	
+	
 	//실습 2-7
 	static boolean equals(int[] a, int[] b) {
 		if(a.length != b.length) {           //배열 a와 배열b의 길이 비교
@@ -59,6 +73,58 @@ public class Exercise {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
+		
+		//실습 2-9
+		int counter = 0; //나눗셈의 횟수
+		
+		for(int n = 2; n <= 10; n++) {
+			int i;
+			
+			for(i = 2; i < n; i++) { 
+				counter++;
+				
+				if(n % i == 0) {   //나누어 떨어지면 소수가 아님
+					break;         //더이상 반복 불필요
+				}
+			}
+			if(n == i) {  //마지막까지 나누어 떨어지지 않음
+				System.out.println(n); 
+			}
+		}
+		System.out.println("나눗셈을 수행한 횟수: " + counter);
+		
+		/*실습 2-8[A] 한번더 보기
+		int no; //변환하는 정수
+		int cd; //기수
+		int dno; //변환 후의 자릿수
+		int retry;; //다시한번?
+		
+		char[] cno = new char[32]; //변환 후 각 자라의 숫자를 넣어두는 문자의 배열
+		
+		System.out.println("10진수를 기수 변환합니다.");
+		do {
+			do {
+				System.out.println("변환하는 음이 아닌 정수: ");
+				no = sc.nextInt();
+			} while(no < 0);
+			
+			do {
+				System.out.println("어떤 진수로 변환할까요(2~36): ");
+				cd = sc.nextInt();
+			} while(cd < 2 || cd > 36);
+			
+			 dno = CardConvRev(no, cd, cno);
+			
+			System.out.println(cd + "진수로는 ");
+			for(int i = dno - 1; i >= 0; i--) {
+				System.out.println(cno[i]);
+			}
+			System.out.println("입니다.");
+			
+			System.out.println("한번 더 할까요?(1.예 / 0.아니오) : ");
+			retry = sc.nextInt();
+		} while(retry == 1);
+		*/
 		
 		/*실습 2-7
 		System.out.print("배열 a의 요솟수: ");
