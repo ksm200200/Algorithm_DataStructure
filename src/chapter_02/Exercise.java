@@ -5,6 +5,62 @@ import java.util.Scanner;
 
 public class Exercise {
 	
+	static final int VMAX = 21;
+	
+	static class PhyscData {
+		String name;
+		int height;
+		double vision;
+		
+		PhyscData(String name, int height, double vision) {
+			this.name = name;
+			this.height = height;
+			this.vision = vision;
+			
+		}	
+	}
+	
+	static double aveHeight(PhyscData[] dat) {  //키의 평균값 구함
+		double sum = 0;
+		
+		for(int i = 0; i < dat.length; i++) {
+			sum += dat[i].height;
+		}
+		return sum / dat.length;
+	}
+	
+	static void distVision(PhyscData[] dat, int[] dist) {  //시력분포를 구함
+		int i = 0;
+		dist[i] = 0;
+		
+		for(i = 0; i < dat.length; i++) {
+			if(dat[i].vision >= 0.0 && dat[i].vision <= VMAX /10.0) {
+				dist[(int)(dat[i].vision * 10)]++;
+			}
+		}
+	}
+	
+	
+	//실습 2-13
+	static int[][] mdays = {
+			{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+			{31, 29, 31, 30, 31, 30, 31, 31 ,30, 31, 30, 31}
+	};
+	
+	//서기 year년은 윤년인가(윤년:1 / 평년:0)
+	static int isLeap(int year) {                 //실습 2-13
+		//4로 나누어떨어지고 100으로 나누어 떨어지지 않으면 윤년:1이고 400으로 나누어 떨어지면 평년:0이다.
+		return ( (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0) ) ? 1 : 0;
+	}
+	
+	static int dayOfYear(int y, int m, int d) {  //실습 2-13 
+		int days = d;
+		
+		for(int i = 1; i < m; i++) {
+			days += mdays[isLeap(y)][i - 1];
+		}
+		return days;
+	}
 	
 	
 	//실습 2-8
@@ -74,7 +130,123 @@ public class Exercise {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		//실습 2-9
+		PhyscData[] x = {
+			new PhyscData("박현규",162, 0.3),
+			new PhyscData("김선민",173, 0.4),
+			new PhyscData("함진아",182, 2.0),
+			new PhyscData("최윤미",175, 0.7),
+			new PhyscData("이수진",168, 1.5),
+			new PhyscData("홍연의",171, 0.4),
+			new PhyscData("김영준",174, 1.2),
+			new PhyscData("박용규",199, 0.1)
+			
+		};
+		
+		int[] vdist = new int[VMAX]; //시력분포
+		
+		System.out.println("----신체검사 리스트----");
+		
+		System.out.println("이름     키    시력");
+		System.out.println("-----------------");
+		for(int i = 0; i < x.length; i++) {
+			System.out.printf("%-5s %3d %5.1f\n", x[i].name, x[i].height, x[i].vision);
+		}
+		
+		System.out.printf("\n평균 키 : %5.1fcm \n", aveHeight(x));
+		distVision(x, vdist);
+		
+		System.out.println("\n시력 분포");
+		for(int i = 0; i < VMAX; i++) {
+			System.out.printf("%3.1f~ : %2d명\n", i / 10.0, vdist[i]);
+		}
+		
+		/*실습 2-13
+		int retry;l
+		System.out.println("그 해 경과 일수를 구합니다.");
+		
+		do {
+			System.out.print("년: "); int year = sc.nextInt();
+			System.out.print("월: "); int month = sc.nextInt();
+			System.out.print("일: "); int day = sc.nextInt();
+			
+			System.out.printf("그 해 %d일째입니다. \n", dayOfYear(year, month, day));
+			
+			System.out.println("한번 더 할까요? (1.예 / 0.아니오): ");
+			retry = sc.nextInt();
+		} while(retry == 1);
+		*/
+		
+		/*실습 2-12
+		int[][] x= new int[2][4];  //2차원 배열 선언
+		
+		x[0][1] = 37;
+		x[0][3] = 54;
+		x[1][2] = 65;
+		System.out.println(x.length);
+		
+		for(int i = 0; i < 2; i++) {
+			for(int j = 0; j < 4; j++) {
+				System.out.println("x[" + i + "][" + j + "] = " + x[i][j] );
+			}
+		}
+		*/
+		
+		/*실습 2-11, 1000이하의 소수를 열고(버전3)
+		int counter = 0;             //곱셈과 나눗셈의 횟수 
+		int ptr = 0;                 // 찾은 소수의 개수
+		int[] prime = new int[500];  // 소수를 저장하는 배열
+
+		prime[ptr++] = 2; // prime[0] = 2
+		prime[ptr++] = 3; // prime[1] = 3
+		
+		for(int n = 5; n <= 10; n += 2 ) {
+			boolean flag = false;
+			
+			for(int i = 1; prime[i] * prime[i] <= n; i++) {
+				counter += 2;
+				if(n % prime[i] == 0) { //나누어 떨어지면 소수가 아님
+					flag = true;        // 더이상의 반복은 불필요
+					break;
+				}
+			}
+			if(!flag) {
+				prime[ptr++] = n;
+				counter++;
+			}
+		}
+		for(int i = 0; i < ptr; i ++) {
+			System.out.println(prime[i]);
+		}
+		System.out.println("곱셈과 나눗셈을 수행한 횟수: " + counter);
+		*/
+		
+		/*실습 2-10, 1000이하의 소수를 열거(버전2)
+		int counter = 0;             //나눗셈의 횟수
+		int ptr = 0;                 //찾은 소수의 개수
+		int[] prime = new int[500];  //소수를 저장하는 배열
+		
+		prime[ptr++] = 2;            //2는 소수임
+		
+		for(int n = 3; n <= 10; n += 2) { //대상은 홀수만
+			int i;
+			
+			for(i = 1; i < ptr; i++) {
+				counter++;
+				if(n % prime[i] == 0)
+					break;
+			}
+			if(ptr == i) {           //마지막 까지 나누어 떨어지지 않음
+				prime[ptr++] = n;   //소수라고 배열에 저장
+			}
+			
+		}
+		for(int i = 0; i < ptr; i++) {
+			System.out.println(prime[i]);
+		}
+		System.out.println("나눗셈을 수행한 횟수: " + counter);
+		*/
+		
+		/*실습 2-9, 1000이하의 소수 열거(버전 1)
 		int counter = 0; //나눗셈의 횟수
 		
 		for(int n = 2; n <= 10; n++) {

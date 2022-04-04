@@ -3,7 +3,74 @@ package chapter_02;
 import java.util.Random;
 import java.util.Scanner;
 
+import chapter_02.Exercise.PhyscData;
+
 public class Practice {
+	
+static final int VMAX = 21;
+
+	//연습문제 2-10
+	static class PhyscData {
+		String name;
+		int height;
+		double vision;
+		
+		PhyscData(String name, int height, double vision) {
+			this.name = name;
+			this.height = height;
+			this.vision = vision;
+			
+		}	
+	}
+	
+	static double aveHeight(PhyscData[] dat) {  //키의 평균값 구함
+		double sum = 0;
+		
+		for(int i = 0; i < dat.length; i++) {
+			sum += dat[i].height;
+		}
+		return sum / dat.length;
+	}
+	
+	static void distVision(PhyscData[] dat, int[] dist) {  //시력분포를 구함
+		int i = 0;
+		dist[i] = 0;
+		
+		for(i = 0; i < dat.length; i++) {
+			if(dat[i].vision >= 0.0 && dat[i].vision <= VMAX /10.0) {
+				dist[(int)(dat[i].vision * 10)]++;
+			}
+		}
+	}	
+	
+	
+	
+	//연습문제 2-8, 2-9
+	static int[][] mdays = {
+			{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, //평년
+			{31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}  //윤년
+	};
+	
+	static int isLeap(int year) {
+		return( (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0) ) ? 1 : 0;
+	}
+	//서기 y년 m월 d일의 그 해 경과 일 수를 구함
+	static int dayOfYear(int y, int m, int d) {  //연습문제 2-8 지난 일수 
+		while(--m != 0) {
+			d += mdays[isLeap(y)][m-1];
+		}
+		return d;
+	}
+	
+	static int dayYear(int y, int m, int d) {  //연습문제 2-9 a는 남은 일 수
+		int a = 0;
+		while(--m != 0) {
+			d += mdays[isLeap(y)][m-1];
+		}
+		a = 365 - d;
+		return a;
+	}
+	
 	
 	//연습문제 2-6
 	static int CardConvRev(int x, int r, char[] d) {
@@ -91,6 +158,63 @@ public class Practice {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		PhyscData[] x = {
+				new PhyscData("박현규",162, 0.3),
+				new PhyscData("김선민",173, 0.4),
+				new PhyscData("함진아",182, 2.0),
+				new PhyscData("최윤미",175, 0.7),
+				new PhyscData("이수진",168, 1.5),
+				new PhyscData("홍연의",171, 0.4),
+				new PhyscData("김영준",174, 1.2),
+				new PhyscData("박용규",199, 0.1)
+				
+			};
+			
+			int[] vdist = new int[VMAX]; //시력분포
+			
+			System.out.println("----신체검사 리스트----");
+			
+			System.out.println("이름     키    시력");
+			System.out.println("-----------------");
+			for(int i = 0; i < x.length; i++) {
+				System.out.printf("%-5s %3d %5.1f\n", x[i].name, x[i].height, x[i].vision);
+			}
+			
+			System.out.printf("\n평균 키 : %5.1fcm \n", aveHeight(x));
+			distVision(x, vdist);
+			
+			System.out.println("\n시력 분포");
+			for(int i = 0; i < VMAX; i++) {
+				System.out.printf("%3.1f ~ : ", (i / 10.0));
+				
+				for(int j = 0; j < vdist[i]; j++) {
+					System.out.print("*");
+					}
+				System.out.println("");
+			}
+			
+			
+		
+		/*연습문제 2-8, 2-9
+		int retry; // 한번더
+		
+		System.out.println("연내의 경과 일 수를 구합니다.");
+		
+		do {
+			System.out.print("년: "); int year = sc.nextInt();
+			System.out.print("월: "); int month = sc.nextInt();
+			System.out.print("일: "); int day = sc.nextInt();
+			
+			System.out.printf("연내 %d일째입니다.\n", dayOfYear(year, month, day));
+			System.out.printf("연내 %d일 남았습니다.\n", dayYear(year, month, day));
+			
+			System.out.println("한번 더 할까요? (1.예 / 0.아니오): ");
+			retry = sc.nextInt();
+			
+		} while(retry == 1);
+		*/
+		
+		/* 연습문제 2-7
 		int no; //변환하는 정수
 		int cd; //기수
 		int dno; //변환 후의 자릿수
@@ -120,6 +244,7 @@ public class Practice {
 			System.out.println("한번 더 할까요?(1.예 / 0.아니오) : ");
 			retry = sc.nextInt();
 		} while(retry == 1);
+		*/
 		
 		
 		/*연습문제 2-5
