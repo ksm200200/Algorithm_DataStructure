@@ -40,6 +40,7 @@ public class Supplement {
 	
 	public static void main(String[] args) {
 		
+		
 		/*실습 3C-3
 		GenericClass<String> s = new GenericClass<String>("ABC");
 		GenericClass<Integer> n = new GenericClass<Integer>(15);
