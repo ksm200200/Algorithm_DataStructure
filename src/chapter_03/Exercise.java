@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Exercise {
 	
+	
 	//실습 3-8
 	static class PhyscData {
 		private String name;     //이름
