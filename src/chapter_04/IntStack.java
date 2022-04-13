@@ -2,6 +2,7 @@ package chapter_04;
 
 
 class IntStack {
+
 	
 	private int max;
 	private int ptr;

@@ -3,6 +3,7 @@ package chapter_04;
 
 //연습문제 4-4
 public class IntAryQueue {
+	
 
 	private int max;    // 큐 용량
 	private int num;    // 현재 데이터 수
