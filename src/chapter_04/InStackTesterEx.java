@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class InStackTesterEx {
 	
-	
 	public static void main(String[] args) {
 		
 		//연습 4-1
