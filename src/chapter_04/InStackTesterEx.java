@@ -3,7 +3,6 @@ package chapter_04;
 
 import java.util.Scanner;
 
-
 public class InStackTesterEx {
 	
 	public static void main(String[] args) {

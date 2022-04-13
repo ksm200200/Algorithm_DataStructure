@@ -5,7 +5,6 @@ import java.util.Scanner;
 //실습 4C-1
 public class LastNElements {
 	
-	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		final int N = 10;

@@ -1,6 +1,5 @@
 package chapter_04;
 
-
 //연습문제 4-4
 public class IntAryQueue {
 
