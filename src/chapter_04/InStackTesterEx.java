@@ -8,7 +8,6 @@ public class InStackTesterEx {
 	
 	public static void main(String[] args) {
 		
-		
 		//연습 4-1
 		Scanner stdIn = new Scanner(System.in);
 		IntStack s = new IntStack(100); // 최대 100개를 푸시할 수 있는 스택

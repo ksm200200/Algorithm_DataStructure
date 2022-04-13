@@ -3,7 +3,6 @@ package chapter_04;
 //실습 4-3
 public class IntQueue {
 	
-	
 	private int max;   //큐의 용량
 	private int front;  // 첫 번째 요소 커서
 	private int rear;  //마지막 요소 커서
