@@ -2,6 +2,7 @@ package chapter_04;
 
 import java.util.Scanner;
 
+
 //실습 4C-1
 public class LastNElements {
 	

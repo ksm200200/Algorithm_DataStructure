@@ -1,6 +1,5 @@
 package chapter_04;
 
-
 //실습 4-3
 public class IntQueue {
 

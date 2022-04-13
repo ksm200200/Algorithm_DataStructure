@@ -1,6 +1,5 @@
 package chapter_04;
 
-
 class IntStack {
 	
 	private int max;
