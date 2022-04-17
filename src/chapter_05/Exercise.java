@@ -6,6 +6,20 @@ import com.sun.org.apache.xml.internal.utils.IntStack;
 
 public class Exercise {
 	
+	//실습 5-6 n개의 원반을 x번 기둥에서 y번 기둥으로 옮김
+	static void move(int n, int x, int y) {
+		if(n > 1) {
+			move(n - 1, x, 6 - x- y);
+		}
+		System.out.println("원반 [" + n + "]을 " + x + "기둥에서 " + y + "기둥으로 옮김");
+		
+		if(n > 1) {
+			move(n - 1, 6 - x- y, y);
+		}
+	}
+	
+	
+	
 	//실습 5-5 스택을 사용한 비재귀적 recur메서드
 	static void recur3(int n) {
 		
@@ -72,10 +86,17 @@ public class Exercise {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.println("하노이의 탑");
+		System.out.print("원반의 개수: ");
+		int num = sc.nextInt();
+		
+		move(num, 1, 3);
+		
+		/* 실습 5 - 3,4,5
 		int x = sc.nextInt();
-		//recur(x);
+		recur(x);
 		System.out.println("-------");
-		//recur2(x);
+		recur2(x);
 		System.out.println("------");
 		recur3(x);
 		
