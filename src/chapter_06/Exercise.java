@@ -4,6 +4,36 @@ import java.util.Scanner;
 
 public class Exercise {
 	
+	//실습 6-5
+	static void insertionSort(int[] a, int n) {
+		for(int i = 1; i < n; i++) {
+			int j;
+			int tmp = a[i];
+			for(j = i; j > 0 && a[j -1]> tmp; j--) {
+				a[j] = a[j - 1];
+			}
+			a[j] = tmp;
+			System.out.println("-----------------");
+			
+			for(int k = 0; k < a.length; k++) {
+				System.out.println("a[" + k +"] = " + a[k]);
+			}
+		}
+	}
+	
+	//실습 6-4 단순선택 정렬
+	static void selectionSort(int[] a, int n) {
+		for(int i = 0; i < n - 1; i++) {
+			int min = i;
+			for(int j = i + 1; j < n; j++) {
+				if(a[j] < a[min]) {
+					min = j;
+				}
+			}
+			swap(a, i, min);
+		}
+	}
+	
 	//실습 6-3 버블정렬(버전 3, 6-2를 개선)
 	static void bubbleSort3(int[] a, int n) {
 		
@@ -43,7 +73,7 @@ public class Exercise {
 	
 	//실습 6-1 버블 정렬(버전 1)
 	static void bubbleSort(int[] a, int n) {
-		for(int i = 0; i < n - 1; i++) {
+		for(int i = 0; i < a.length; i++) {
 			for(int j = n - 1; j > i; j--) {  //패스
 				if(a[j - 1] > a[j]) {
 					swap(a, j - 1, j);
@@ -68,6 +98,26 @@ public class Exercise {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.print("단순 선택 정렬");
+		System.out.print("요솟수 : ");
+		int nx = sc.nextInt();
+		int[] x = new int[nx];
+		
+		for(int i = 0; i < nx; i++) {
+			System.out.print("x[" + i +"]: ");
+			x[i] = sc.nextInt();
+		}
+		
+		insertionSort(x, nx); //배열 x를 단순삽입 정렬
+		
+//		System.out.println("오름차순으로 정렬했습니다.");
+//		for(int i = 0; i < nx; i++) {
+//			System.out.println("x[" + i +"] = " + x[i]);
+//		}
+//		
+		
+		
+		/*실습 6-3
 		System.out.println("버블 정렬(버전 3)");	
 		System.out.print("요솟수: ");
 		int nx = sc.nextInt();
@@ -82,10 +132,7 @@ public class Exercise {
 		for(int i = 0; i < nx; i++) {
 			System.out.println("x[" + i +"] = " + x[i]);
 		}
-		
-		
-		
-		
+		*/
 		
 		
 		/*실습 6 - 2

@@ -4,6 +4,34 @@ import java.util.Scanner;
 
 public class Practice {
 	
+
+	
+	
+	//연습문제 6-6(단순 선택 정렬)
+	static void selectionSort(int[] a, int n) {
+		for(int i = 0; i < n - 1; i++) {
+			int min = i;	//미정렬된 부분 최소 요소의 index
+			for(int j = i + 1; j < n; j++) {
+				if(a[j] < a[min]) {
+					min = j;
+				}
+			}
+			for(int m = 0; m < n; m++) {
+				System.out.print((m == i) ? "  * " : (m == min) ? "  + " : "    ");
+			}
+			System.out.println();
+			
+			for(int m = 0; m < n; m++) {
+				System.out.printf("%3d ", a[m]);
+			}
+			System.out.println();
+			swap(a, i, min);
+		}
+	}
+	
+	
+	
+	
 	//연습문제 6-3
 	static void bubbleSort3(int[] a, int n) {
 		int ccnt = 0; // 비교횟수
@@ -87,10 +115,31 @@ public class Practice {
 	}
 	
 	public static void main(String[] args) {
+		
 		Scanner sc = new Scanner(System.in);
 		
 		
-		//연습문제 6- 1, 2
+		/*연습문제 6-6
+		System.out.print("단순 선택 정렬");
+		System.out.print("요솟수 : ");
+		int nx = sc.nextInt();
+		int[] x = new int[nx];
+		
+		for(int i = 0; i < nx; i++) {
+			System.out.print("x[" + i +"]: ");
+			x[i] = sc.nextInt();
+		}
+		
+		selectionSort(x, nx);
+		
+		
+		System.out.println("오름차순으로 정렬했습니다.");
+		for(int i = 0; i < nx; i++) {
+			System.out.println("x[" + i +"] = " + x[i]);
+		}
+		*/
+		
+		/*연습문제 6- 1, 2
 		System.out.println("단순교환정렬(버블정렬, 머리 -> 꼬리로 스캔)");
 		
 		System.out.print("요솟수: ");
@@ -105,7 +154,7 @@ public class Practice {
 		//bubbleSort(x, nx);
 		System.out.println("-----------");
 		//bubbleSort2(x, nx);
-		bubbleSort3(x, nx);
+		bubbleSort3(x, nx);*/
 		
 		
 		
